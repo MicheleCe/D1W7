@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+</head>
+<body>
+    <form action="">
+      <label for="name">Enter Name:</label>
+      <input type="text" id="name"><br><br>
+      <label for="surname">Enter Surname</label>
+      <input type="text" id="surname"><br><br>
+      <label for="surname">Enter Date</label>
+      <input type="date" id="date">
+      <input type="submit" value="Submit" id="submit" >
+    </form>
+    <table id="tab">
+        <tr>
+          <th>Name</th>
+          <th>Surname</th>
+          <th>Date</th>
+        </tr>
+    </table>
+</body>
+<script>
+    let inputs = document.querySelectorAll('input')
+    inputs.forEach(element => {element.addEventListener("click", function(event){
+    event.preventDefault()});
+    });
+
+    const User = function (name, surname, date) {
+        this.name = name
+        this.surname = surname
+        this.date = date;
+    }
+
+
+    document.getElementById('submit').onclick = () => {
+        let newUser = new User(document.getElementById('name').value, document.getElementById('surname').value, document.getElementById('date').value)
+        console.log(newUser);
+        let newTab = document.createElement('tr');
+        newTab.innerHTML = `<tr>
+                                <td>${newUser.name} </td>
+                                <td>${newUser.surname} </td>
+                                <td>${newUser.date} </td>
+                            </tr>`;
+        document.getElementById('tab').appendChild(newTab)
+    }
+    
+
+</script>
+
+</html>
